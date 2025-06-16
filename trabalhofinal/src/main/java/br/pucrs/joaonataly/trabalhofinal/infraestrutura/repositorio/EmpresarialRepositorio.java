@@ -11,5 +11,4 @@ import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Empresarial;
 public interface EmpresarialRepositorio extends JpaRepository<Empresarial, Integer> {
     List<Empresarial> findAll(); // já existe, mas você pode sobrescrever
     Empresarial findByCnpj(String cnpj);
-    Boolean addEmpresarial(Empresarial empresarial);
 }
