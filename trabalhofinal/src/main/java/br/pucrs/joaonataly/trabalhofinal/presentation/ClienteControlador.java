@@ -1,4 +1,4 @@
-package br.pucrs.joaonataly.trabalhofinal.controladores;
+package br.pucrs.joaonataly.trabalhofinal.presentation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Cliente;
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Empresarial;
-import br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorio.EmpresarialRepositorio;
-import br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.entities.Cliente;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.entities.Empresarial;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.repositorio.EmpresarialRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.repositorio.IndividualRepositorio;
 
 @RestController
 @RequestMapping("/clientes")

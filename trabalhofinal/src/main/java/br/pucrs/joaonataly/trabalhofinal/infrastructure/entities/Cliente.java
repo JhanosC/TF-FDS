@@ -1,5 +1,5 @@
 
-package br.pucrs.joaonataly.trabalhofinal.dominio.entidades;
+package br.pucrs.joaonataly.trabalhofinal.infrastructure.entities;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

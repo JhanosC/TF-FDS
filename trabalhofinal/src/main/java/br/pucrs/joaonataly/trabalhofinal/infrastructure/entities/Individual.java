@@ -1,4 +1,4 @@
-package br.pucrs.joaonataly.trabalhofinal.dominio.entidades;
+package br.pucrs.joaonataly.trabalhofinal.infrastructure.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

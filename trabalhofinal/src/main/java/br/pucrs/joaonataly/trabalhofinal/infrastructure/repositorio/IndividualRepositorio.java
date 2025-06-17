@@ -1,11 +1,11 @@
-package br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorio;
+package br.pucrs.joaonataly.trabalhofinal.infrastructure.repositorio;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Individual;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.entities.Individual;
 
 @Repository
 public interface IndividualRepositorio extends JpaRepository<Individual, Integer> {
