@@ -1,20 +1,20 @@
-package br.pucrs.joaonataly.trabalhofinal.infrastructure.configuracao;
+package br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.configuracao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.pucrs.joaonataly.trabalhofinal.infrastructure.entities.Empresarial;
-import br.pucrs.joaonataly.trabalhofinal.infrastructure.entities.Individual;
-import br.pucrs.joaonataly.trabalhofinal.infrastructure.repositorio.EmpresarialRepositorio;
-import br.pucrs.joaonataly.trabalhofinal.infrastructure.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IEmpresarialRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Empresarial;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Individual;
 
 @Configuration
 public class BancoInicial {
 
 @Autowired
-private EmpresarialRepositorio empresarialRepositorio;
+private IEmpresarialRepositorio empresarialRepositorio;
 @Autowired
 private IndividualRepositorio individualRepositorio;
 

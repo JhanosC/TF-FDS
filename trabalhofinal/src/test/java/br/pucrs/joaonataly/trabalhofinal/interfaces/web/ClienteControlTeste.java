@@ -9,22 +9,22 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import br.pucrs.joaonataly.trabalhofinal.controladores.ClienteControlador;
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Cliente;
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Empresarial;
-import br.pucrs.joaonataly.trabalhofinal.dominio.entidades.Individual;
-import br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorio.EmpresarialRepositorio;
-import br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.presentation.ClienteControlador;
+import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IEmpresarialRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Cliente;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Empresarial;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Individual;
 
 public class ClienteControlTeste {    
-private EmpresarialRepositorio empresarialRepositorio;
+private IEmpresarialRepositorio empresarialRepositorio;
     private IndividualRepositorio individualRepositorio;
     private ClienteControlador clienteControlador;
 
     @BeforeEach
     public void setUp() {
         // Cria mocks dos repositórios
-        empresarialRepositorio = mock(EmpresarialRepositorio.class);
+        empresarialRepositorio = mock(IEmpresarialRepositorio.class);
         individualRepositorio = mock(IndividualRepositorio.class);
 
         // Injeta os mocks no controlador

@@ -1,5 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
+import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
+
 public class JogoEletronicoModel extends JogoModel {
     private TipoEletronicoModel tipo;
     private String plataforma;

@@ -1,5 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
+import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
+
 public class JogoMesaModel extends JogoModel {
     private TipoMesaModel tipo;
     private int numeroPecas;
