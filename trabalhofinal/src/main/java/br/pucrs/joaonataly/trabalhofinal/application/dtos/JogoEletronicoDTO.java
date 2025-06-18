@@ -2,6 +2,7 @@ package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
+import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 
 public class JogoEletronicoDTO implements JogoDTO {
     private String nome;
@@ -40,20 +41,15 @@ public class JogoEletronicoDTO implements JogoDTO {
         return plataforma;
     }
 
-    public static JogoEletronicoDTO fromModel(JogoEletronicoModel model) {
-        return new JogoEletronicoDTO(
-                model.getNome(),
-                model.getValorBase(),
-                model.getCodigo(),
-                model.getTipo(),
-                model.getPlataforma()
-        );
-    }
-    public JogoEletronicoDTO fromModel(JogoDTO model) {
-        if (model instanceof JogoEletronicoDTO) {
-            return (JogoEletronicoDTO) model;
-        }
-        throw new IllegalArgumentException("Model is not an instance of JogoEletronicoDTO");
-    }
+    // @Override
+    // public static JogoDTO fromModel(JogoModel model) {
+    //     return new JogoEletronicoDTO(
+    //             model.getNome(),
+    //             model.getValorBase(),
+    //             model.getCodigo(),
+    //             model.getTipo(),
+    //             model.getPlataforma()
+    //     );
+    // }
     
 }

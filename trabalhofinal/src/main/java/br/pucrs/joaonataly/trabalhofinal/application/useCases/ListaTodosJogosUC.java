@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.pucrs.joaonataly.trabalhofinal.domain.services.JogoService;
+import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Jogo;
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.JogoDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoModel;
 
@@ -18,7 +19,10 @@ public class ListaTodosJogosUC {
         this.jogoService = jogoService;
     }
 
-    public List<JogoModel> execute() {
-        return jogoService.getAllJogos();
+    public List<JogoDTO> execute() {
+        return jogoService.getAllJogos().stream().map(p -> p.toDTO()).toList();
+        // return jogoService.getAllJogos().stream()
+        //     .map(p->JogoDTO.fromModel(p))
+        //     .toList();
     }
 }

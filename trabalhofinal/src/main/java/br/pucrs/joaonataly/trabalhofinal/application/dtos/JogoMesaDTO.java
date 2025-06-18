@@ -2,6 +2,7 @@ package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoMesaModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
+import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 
 public class JogoMesaDTO implements JogoDTO {
     private String nome;
@@ -40,20 +41,14 @@ public class JogoMesaDTO implements JogoDTO {
         return numeroPecas;
     }
     
-    public static JogoMesaDTO fromModel(JogoMesaModel model) {
-        return new JogoMesaDTO(
-                model.getNome(),
-                model.getValorBase(),
-                model.getCodigo(),
-                model.getTipo(),
-                model.getNumeroPecas()
-        );
-    }
-
-    public JogoMesaDTO fromModel(JogoDTO model) {
-        if (model instanceof JogoMesaDTO) {
-            return (JogoMesaDTO) model;
-        }
-        throw new IllegalArgumentException("Model is not an instance of JogoMesaDTO");
-    }
+    // @Override
+    // public static JogoDTO fromModel(JogoModel model) {
+    //     return new JogoMesaDTO(
+    //             model.getNome(),
+    //             model.getValorBase(),
+    //             model.getCodigo(),
+    //             model.getTipo(),
+    //             model.getNumeroPecas()
+    //     );
+    // }
 }

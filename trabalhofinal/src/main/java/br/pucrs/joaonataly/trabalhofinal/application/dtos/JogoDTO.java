@@ -1,8 +1,9 @@
 package br.pucrs.joaonataly.trabalhofinal.application.dtos;
+import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 
 public interface JogoDTO {
     String getNome();
     double getValorBase();
     int getCodigo();
-    JogoDTO fromModel(JogoDTO model);
+    // JogoDTO fromModel(JogoModel model);
 }
