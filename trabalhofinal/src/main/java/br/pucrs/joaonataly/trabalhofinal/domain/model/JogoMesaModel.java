@@ -1,6 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
 
 public class JogoMesaModel extends JogoModel {
     private TipoMesaModel tipo;
@@ -17,6 +18,17 @@ public class JogoMesaModel extends JogoModel {
     }
     public int getNumeroPecas() {
         return numeroPecas;
+    }
+
+    @Override
+    public JogoDTO toDTO(){
+        return new JogoMesaDTO(
+                getNome(),
+                getValorBase(),
+                getCodigo(),
+                getTipo(),
+                getNumeroPecas()
+        );
     }
     
 }

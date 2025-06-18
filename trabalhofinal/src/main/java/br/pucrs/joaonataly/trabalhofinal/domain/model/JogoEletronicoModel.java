@@ -1,5 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.JogoDTO;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.JogoEletronicoDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
 
 public class JogoEletronicoModel extends JogoModel {
@@ -18,6 +20,17 @@ public class JogoEletronicoModel extends JogoModel {
 
     public TipoEletronicoModel getTipo() {
         return tipo;
+    }
+
+    @Override
+    public JogoDTO toDTO(){
+        return new JogoEletronicoDTO(
+                getNome(),
+                getValorBase(),
+                getCodigo(),
+                getTipo(),
+                getPlataforma()
+        );
     }
 
 

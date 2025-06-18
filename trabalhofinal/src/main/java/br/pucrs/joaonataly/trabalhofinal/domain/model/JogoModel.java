@@ -1,5 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+
 public abstract class JogoModel {
     private int codigo;
     private String nome;
@@ -21,5 +23,9 @@ public abstract class JogoModel {
 
     public double getValorBase() {
         return valorBase;
+    }
+
+    public JogoDTO toDTO(){
+        return null;
     }
 }
