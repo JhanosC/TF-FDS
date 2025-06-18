@@ -28,7 +28,7 @@ private IEmpresarialRepositorio empresarialRepositorio;
         individualRepositorio = mock(IndividualRepositorio.class);
 
         // Injeta os mocks no controlador
-        clienteControlador = new ClienteControlador(empresarialRepositorio, individualRepositorio);
+        clienteControlador = new ClienteControlador(empresarialRepositorio, individualRepositorio,null);
     }
 
     @Test

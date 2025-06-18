@@ -16,6 +16,7 @@ import br.pucrs.joaonataly.trabalhofinal.application.useCases.ListaTodosJogosUC;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoModel;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Cliente;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Empresarial;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
 
 @RestController
 @RequestMapping("/clientes")
@@ -24,12 +25,13 @@ public class ClienteControlador {
     private IEmpresarialRepositorio empresarialRepositorio;
     @Autowired
     private IndividualRepositorio individualRepositorio;
-
+    @Autowired
     private ListaTodosJogosUC listaTodosJogosUC;
 
-    public ClienteControlador(IEmpresarialRepositorio empresarialRepositorio, IndividualRepositorio individualRepositorio) {
+    public ClienteControlador(IEmpresarialRepositorio empresarialRepositorio, IndividualRepositorio individualRepositorio, ListaTodosJogosUC listaTodosJogosUC) {
         this.empresarialRepositorio = empresarialRepositorio;
         this.individualRepositorio = individualRepositorio;
+        this.listaTodosJogosUC = listaTodosJogosUC;
     }
 
     @GetMapping
@@ -46,7 +48,7 @@ public class ClienteControlador {
     }
 
     @GetMapping("/jogos")
-    public List<JogoModel> listarTodosJogos() {
+    public List<JogoDTO> listarTodosJogos() {
         return listaTodosJogosUC.execute();
     }
 }
