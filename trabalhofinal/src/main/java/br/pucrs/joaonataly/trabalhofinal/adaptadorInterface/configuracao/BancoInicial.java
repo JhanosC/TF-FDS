@@ -5,8 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IEmpresarialRepositorio;
-import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IndividualRepositorio;
+import br.pucrs.joaonataly.trabalhofinal.domain.repository.IEmpresarialRepository;
+import br.pucrs.joaonataly.trabalhofinal.domain.repository.IndividualRepository;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Empresarial;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Individual;
 
@@ -14,17 +14,17 @@ import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Individual;
 public class BancoInicial {
 
 @Autowired
-private IEmpresarialRepositorio empresarialRepositorio;
+private IEmpresarialRepository empresarialRepositorio;
 @Autowired
-private IndividualRepositorio individualRepositorio;
+private IndividualRepository individualRepository;
 
     @Bean
     CommandLineRunner iniciarBanco() {
         return args -> {
             // Clientes Individuais
-            individualRepositorio.save(new Individual("Ana Souza", "Rua das Flores, 123", "12345678901"));
-            individualRepositorio.save(new Individual("Carlos Lima", "Av. Brasil, 200", "98765432100"));
-            individualRepositorio.save(new Individual("Fernanda Reis", "Rua A, 111", "11122233344"));
+            individualRepository.save(new Individual("Ana Souza", "Rua das Flores, 123", "12345678901"));
+            individualRepository.save(new Individual("Carlos Lima", "Av. Brasil, 200", "98765432100"));
+            individualRepository.save(new Individual("Fernanda Reis", "Rua A, 111", "11122233344"));
 
             // Clientes Empresariais
             empresarialRepositorio.save(new Empresarial("Supermercado Econômico", "Rua B, 222", "Econômico", "11222333444455"));

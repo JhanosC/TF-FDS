@@ -1,4 +1,4 @@
-package br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio;
+package br.pucrs.joaonataly.trabalhofinal.domain.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Empresarial;
 
 @Repository
-public interface IEmpresarialRepositorio extends JpaRepository<Empresarial, Integer> {
+public interface IEmpresarialRepository extends JpaRepository<Empresarial, Integer> {
     List<Empresarial> findAll();
     Empresarial findByCnpj(String cnpj);
 }

@@ -4,12 +4,10 @@ package br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @JsonTypeInfo(
   use = JsonTypeInfo.Id.NAME,
   include = JsonTypeInfo.As.PROPERTY,
@@ -20,7 +18,6 @@ import jakarta.persistence.MappedSuperclass;
   @JsonSubTypes.Type(value = Empresarial.class, name = "empresarial")
 })
 
-@MappedSuperclass
 public abstract class Cliente {
 
     @Id

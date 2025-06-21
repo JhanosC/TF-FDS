@@ -1,20 +1,20 @@
-package br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositorioImpl;
+package br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositoryImpl;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.pucrs.joaonataly.trabalhofinal.adaptadorInterface.repositorio.IJogoRepo;
+import br.pucrs.joaonataly.trabalhofinal.domain.repository.IJogoRepository;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
 
 @Repository
-public class JogoRepo implements IJogoRepo{
+public class JogoRepository implements IJogoRepository {
     private List<JogoModel> jogos;
     
-    public JogoRepo() {
+    public JogoRepository() {
         jogos = new LinkedList<>();
         jogos.add(new JogoEletronicoModel(00,"Jogo0",10.0,"PC",TipoEletronicoModel.AVENTURA));
         jogos.add(new JogoEletronicoModel(01,"Jogo1",20.0,"PS5",TipoEletronicoModel.ESTRATEGIA));
