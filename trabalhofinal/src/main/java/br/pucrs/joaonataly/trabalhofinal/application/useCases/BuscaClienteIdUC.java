@@ -1,6 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteNumeroDTO;
+import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IClienteRepository;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.BD.entities.Cliente;
 import br.pucrs.joaonataly.trabalhofinal.infraestrutura.repositoryImpl.ClienteRepository;
@@ -15,7 +16,7 @@ public class BuscaClienteIdUC {
         this.clienteRepository = clienteRepository;
     }
 
-    public Optional<Cliente> executar(int id) {
+    public Optional<ClienteModel> executar(int id) {
         return clienteRepository.buscarPorId(id);
     }
 

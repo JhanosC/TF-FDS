@@ -53,7 +53,7 @@ public class ClienteControlador {
 
     @PostMapping("/validacliente")
     public boolean validaCliente(@RequestBody ClienteNumeroDTO numeroDTO) {
-        return buscaClienteIdUC.executar(numeroDTO.getNumero()).isPresent();
+        return  buscaClienteIdUC.executar(numeroDTO.getNumero()).isPresent();
     }
 
 
