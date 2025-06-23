@@ -13,6 +13,11 @@ public class JogoEletronicoModel extends JogoModel {
         this.plataforma = plataforma;
         this.tipo = tipo;
     }
+    public JogoEletronicoModel(String nome, double valorBase, String plataforma, TipoEletronicoModel tipo) {
+        super(nome, valorBase);
+        this.plataforma = plataforma;
+        this.tipo = tipo;
+    }
 
     public String getPlataforma() {
         return plataforma;

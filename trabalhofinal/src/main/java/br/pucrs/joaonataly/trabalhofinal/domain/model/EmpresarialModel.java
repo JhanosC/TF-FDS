@@ -9,6 +9,11 @@ public class EmpresarialModel extends ClienteModel {
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
     }
+    public EmpresarialModel( String nome, String endereco, String cnpj, String nomeFantasia) {
+        super(nome, endereco);
+        this.cnpj = cnpj;
+        this.nomeFantasia = nomeFantasia;
+    }
 
     public String getCnpj() {
         return cnpj;

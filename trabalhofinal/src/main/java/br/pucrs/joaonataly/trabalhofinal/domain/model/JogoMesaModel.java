@@ -7,8 +7,13 @@ public class JogoMesaModel extends JogoModel {
     private TipoMesaModel tipo;
     private int numeroPecas;
 
-    public JogoMesaModel(int codigo, String nome, double valorBase, String fabricante, TipoMesaModel tipo, int numeroPecas) {
+    public JogoMesaModel(int codigo, String nome, double valorBase, int numeroPecas, TipoMesaModel tipo) {
         super(codigo, nome, valorBase);
+        this.tipo = tipo;
+        this.numeroPecas = numeroPecas;
+    }
+    public JogoMesaModel(String nome, double valorBase, int numeroPecas, TipoMesaModel tipo) {
+        super( nome, valorBase);
         this.tipo = tipo;
         this.numeroPecas = numeroPecas;
     }
