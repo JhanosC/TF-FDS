@@ -1,6 +1,5 @@
 package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
-import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 
@@ -39,6 +38,17 @@ public class JogoEletronicoDTO implements JogoDTO {
     }
     public String getPlataforma() {
         return plataforma;
+    }
+
+    @Override
+    public JogoModel toModel(){
+        JogoEletronicoModel jogo = new JogoEletronicoModel(
+                getNome(),
+                getValorBase(),
+                getPlataforma(),
+                TipoEletronicoModel.valueOf(getTipoEletronico().name())
+        );
+        return jogo;
     }
 
     // @Override
