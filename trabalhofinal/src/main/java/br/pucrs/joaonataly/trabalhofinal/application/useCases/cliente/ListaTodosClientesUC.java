@@ -1,6 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente;
 
-import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IClienteRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,9 @@ public class ListaTodosClientesUC {
         this.clienteRepository = clienteRepository;
     }
 
-    public List<ClienteModel> executar() {
-        return clienteRepository.getAllClientes();
+    public List<ClienteDTO> executar() {
+        return clienteRepository.getAllClientes().stream()
+                .map(cliente -> cliente.toDTO())
+                .toList();
     }
 }

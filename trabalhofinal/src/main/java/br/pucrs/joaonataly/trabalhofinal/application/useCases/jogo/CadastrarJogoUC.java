@@ -22,7 +22,7 @@ public class CadastrarJogoUC {
         JogoMesaModel mesa = null;
 
         if ("ELETRONICO".equalsIgnoreCase(request.getTipoJogo())) {
-            var jogo = new JogoEletronicoModel(
+            JogoEletronicoModel jogo = new JogoEletronicoModel(
                     request.getNome(),
                     request.getValorBase(),
                     request.getPlataforma(),
@@ -30,7 +30,7 @@ public class CadastrarJogoUC {
             );
             eletronico = cadastrarEletronicoUC.executar(jogo);
         } else if ("MESA".equalsIgnoreCase(request.getTipoJogo())) {
-            var jogo = new JogoMesaModel(
+            JogoMesaModel jogo = new JogoMesaModel(
                     request.getNome(),
                     request.getValorBase(),
                     request.getNumeroPecas(),

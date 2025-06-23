@@ -1,5 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.model;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
 import br.pucrs.joaonataly.trabalhofinal.infrastructure.BD.entities.Cliente;
 import br.pucrs.joaonataly.trabalhofinal.infrastructure.BD.entities.Jogo;
 import jakarta.persistence.*;
@@ -14,13 +15,12 @@ public class AluguelModel {
     private ClienteModel cliente;
     private JogoModel jogo;
     private double valorFinal;
-    public AluguelModel(int identificador, int periodo, LocalDate dataInicial, ClienteModel cliente, JogoModel jogo, double valorFinal ) {
+    public AluguelModel(int identificador, int periodo, LocalDate dataInicial, ClienteModel cliente, JogoModel jogo) {
         this.identificador = identificador;
         this.periodo = periodo;
         this.dataInicial = dataInicial;
         this.cliente = cliente;
         this.jogo = jogo;
-        this.valorFinal = valorFinal;
     }
     public AluguelModel(int periodo, LocalDate dataInicial, ClienteModel cliente, JogoModel jogo) {
         this.periodo = periodo;
@@ -65,6 +65,16 @@ public class AluguelModel {
 
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
+    }
+
+    public AluguelDTO toDTO() {
+        return new AluguelDTO(
+                this.identificador,
+                this.periodo,
+                this.dataInicial.toString(),
+                this.cliente.toDTO(),
+                this.jogo.toDTO()
+        );
     }
 }
 

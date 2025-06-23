@@ -3,6 +3,8 @@ package br.pucrs.joaonataly.trabalhofinal.domain.model;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteDTO;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -36,5 +38,15 @@ public abstract class ClienteModel {
     }
     public String getEndereco() {
         return endereco;
+    }
+    public ClienteDTO toDTO() {
+        if (this instanceof IndividualModel) {
+            IndividualModel individual = (IndividualModel) this;
+            return new ClienteDTO(individual.getNumero(),"INDIVIDUAL", individual.getNome(), individual.getEndereco(), individual.getCpf(), null, null);
+        } else if (this instanceof EmpresarialModel) {
+            EmpresarialModel empresarial = (EmpresarialModel) this;
+            return new ClienteDTO(empresarial.getNumero(),"EMPRESARIAL", empresarial.getNome(), empresarial.getEndereco(), null, empresarial.getNomeFantasia(), empresarial.getCnpj());
+        }
+        return null;
     }
 }
