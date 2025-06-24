@@ -6,9 +6,7 @@ import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.BuscaClien
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarClienteUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarEmpresarialUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarIndividualUC;
-import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.BuscaJogoIdUC;
-import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.CadastrarEletronicoUC;
-import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.CadastrarMesaUC;
+import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.*;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
@@ -23,20 +21,18 @@ public class InitService {
     private CadastrarClienteUC cadastrarClienteUC;
     private CadastrarEmpresarialUC cadastrarEmpresarialUC;
     private CadastrarIndividualUC cadastrarIndividualUC;
-    private CadastrarEletronicoUC cadastrarEletronicoUC;
-    private CadastrarMesaUC cadastrarMesaUC;
+    private CadastrarJogoUC cadastrarJogoUC;
     private CadastrarAluguelUC cadastrarAluguelUC;
     private BuscaJogoIdUC buscaJogoIdUC;
     private BuscaClienteIdUC buscaClienteIdUC;
 
     public InitService(CadastrarEmpresarialUC cadastrarEmpresarialUC, CadastrarIndividualUC cadastrarIndividualUC,
-                       CadastrarEletronicoUC cadastrarEletronicoUC, CadastrarMesaUC cadastrarMesaUC,
+                       CadastrarJogoUC cadastrarJogoUC,
                        CadastrarAluguelUC cadastrarAluguelUC, BuscaJogoIdUC buscaJogoIdUC,
                        BuscaClienteIdUC buscaClienteIdUC, CadastrarClienteUC cadastrarClienteUC) {
         this.cadastrarEmpresarialUC = cadastrarEmpresarialUC;
         this.cadastrarIndividualUC = cadastrarIndividualUC;
-        this.cadastrarEletronicoUC = cadastrarEletronicoUC;
-        this.cadastrarMesaUC = cadastrarMesaUC;
+        this.cadastrarJogoUC = cadastrarJogoUC;
         this.cadastrarAluguelUC = cadastrarAluguelUC;
         this.buscaJogoIdUC = buscaJogoIdUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
@@ -57,19 +53,18 @@ public class InitService {
 
 
         // Jogos de Eletronico
-        cadastrarEletronicoUC.executar(new JogoEletronicoModel("The Legend of Zelda: Breath of the Wild", 299.90, "Nintendo Switch", TipoEletronicoModel.AVENTURA));
-        cadastrarEletronicoUC.executar(new JogoEletronicoModel("Civilization VI", 159.90, "PC", TipoEletronicoModel.ESTRATEGIA));
-        cadastrarEletronicoUC.executar(new JogoEletronicoModel("The Sims 4", 199.00, "PC", TipoEletronicoModel.SIMULACAO));
-        cadastrarEletronicoUC.executar(new JogoEletronicoModel("Assassin's Creed Odyssey", 249.99, "PS5", TipoEletronicoModel.AVENTURA));
-        cadastrarEletronicoUC.executar(new JogoEletronicoModel("Starcraft II", 20.00, "PC", TipoEletronicoModel.ESTRATEGIA));
-
+        cadastrarJogoUC.executar(new JogoRequestDTO("The Legend of Link", 209.99, "Nintendo Switch 2", TipoEletronicoModel.AVENTURA, null, null));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Super Maria Sis", 199.99, "Nintendo Switch 2", TipoEletronicoModel.AVENTURA, null, null));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Call of Duty: Rustic Warfare", 249.99, "PlayStation 5", TipoEletronicoModel.ESTRATEGIA, null, null));
+        cadastrarJogoUC.executar(new JogoRequestDTO("FIFA 28", 299.99, "Xbox Series X", TipoEletronicoModel.SIMULACAO, null, null));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Craft And Mine", 59.99, "PC", TipoEletronicoModel.SIMULACAO, null, null));
         //Jogos de Mesa
-        cadastrarMesaUC.executar(new JogoMesaModel("Catan", 189.90, 120, TipoMesaModel.TABULEIRO));
-        cadastrarMesaUC.executar(new JogoMesaModel("Uno", 34.99, 108, TipoMesaModel.CARTAS));
-        cadastrarMesaUC.executar(new JogoMesaModel("Banco Imobiliário", 129.00, 200, TipoMesaModel.TABULEIRO));
-        cadastrarMesaUC.executar(new JogoMesaModel("Pokémon TCG", 89.90, 60, TipoMesaModel.CARTAS));
-        cadastrarMesaUC.executar(new JogoMesaModel("War", 149.90, 150, TipoMesaModel.TABULEIRO));
-    }
+        cadastrarJogoUC.executar(new JogoRequestDTO("Catan", 89.99, null, null, 19, TipoMesaModel.CARTAS));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Ticket to Ride", 79.99, null, null, 15, TipoMesaModel.CARTAS));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Dungeons & Dragons", 129.99, null, null, 30, TipoMesaModel.TABULEIRO));
+        cadastrarJogoUC.executar(new JogoRequestDTO("War", 69.99, null, null, 25, TipoMesaModel.TABULEIRO));
+        cadastrarJogoUC.executar(new JogoRequestDTO("Xadrez", 19.99, null, null, 32, TipoMesaModel.TABULEIRO));
+}   
 
     @Transactional
     public void cadastrarAlugueis() {
@@ -78,21 +73,21 @@ public class InitService {
         var jogo1 = buscaJogoIdUC.executar(3)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 3 não encontrado"));
                 //public AluguelDTO(int identificador, int periodo, String dataInicial, ClienteDTO clienteDTO, JogoDTO jogoDTO)
-        var aluguel1 = new AluguelDTO(1, 5, LocalDate.of(2025, 6, 20), cliente1, jogo1);
+        var aluguel1 = new AluguelDTO(1, 7, LocalDate.of(2025, 6, 15), cliente1, jogo1);
         cadastrarAluguelUC.executar(aluguel1);
 
         var cliente2 = buscaClienteIdUC.executar(4)
                 .orElseThrow(() -> new RuntimeException("Cliente ID 4 não encontrado"));
         var jogo2 = buscaJogoIdUC.executar(7)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 7 não encontrado"));
-        var aluguel2 = new AluguelModel(2, 8, LocalDate.of(2025, 7, 21), cliente2, jogo2);
+        var aluguel2 = new AluguelDTO(2, 10, LocalDate.of(2025, 7, 1), cliente2, jogo2);
         cadastrarAluguelUC.executar(aluguel2);
 
         var cliente3 = buscaClienteIdUC.executar(5)
                 .orElseThrow(() -> new RuntimeException("Cliente ID 5 não encontrado"));
         var jogo3 = buscaJogoIdUC.executar(1)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 1 não encontrado"));
-        var aluguel3 = new AluguelModel(2, 16, LocalDate.of(2025, 8, 20), cliente3, jogo3);
+        var aluguel3 = new AluguelDTO(3, 5, LocalDate.of(2025, 7, 10), cliente3, jogo3);
         cadastrarAluguelUC.executar(aluguel3);
     }
 }
