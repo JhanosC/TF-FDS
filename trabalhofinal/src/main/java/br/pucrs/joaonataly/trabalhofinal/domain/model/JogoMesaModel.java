@@ -36,4 +36,14 @@ public class JogoMesaModel extends JogoModel {
         );
     }
     
+    @Override
+    public String toString() {
+        return "{" +
+                "codigo=" + getCodigo() +
+                ", nome='" + getNome() + '\'' +
+                ", valorBase=" + getValorBase() +
+                ", numeroPecas=" + numeroPecas +
+                ", tipo=" + tipo +
+                '}';
+    }
 }

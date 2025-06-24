@@ -17,4 +17,13 @@ public class IndividualModel extends ClienteModel {
         return cpf;
     }
     
+    @Override
+    public String toString() {
+        return "{" +
+                "cpf='" + cpf + '\'' +
+                ", numero=" + getNumero() +
+                ", nome='" + getNome() + '\'' +
+                ", endereco='" + getEndereco() + '\'' +
+                '}';
+    }
 }

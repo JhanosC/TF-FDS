@@ -38,5 +38,15 @@ public class JogoEletronicoModel extends JogoModel {
         );
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "codigo=" + getCodigo() +
+                ", nome='" + getNome() + '\'' +
+                ", valorBase=" + getValorBase() +
+                ", plataforma='" + plataforma + '\'' +
+                ", tipo=" + tipo +
+                '}';
+    }
 
 }
