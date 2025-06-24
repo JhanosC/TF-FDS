@@ -22,6 +22,12 @@ public class AluguelModel {
         this.cliente = cliente;
         this.jogo = jogo;
     }
+    public AluguelModel(int periodo, LocalDate dataInicial, ClienteModel cliente, JogoModel jogo) {
+        this.periodo = periodo;
+        this.dataInicial = dataInicial;
+        this.cliente = cliente;
+        this.jogo = jogo;
+    }
 
     public int getPeriodo() {
         return periodo;
@@ -65,7 +71,7 @@ public class AluguelModel {
         return new AluguelDTO(
                 this.identificador,
                 this.periodo,
-                this.dataInicial,
+                this.dataInicial.toString(),
                 this.cliente.toDTO(),
                 this.jogo.toDTO()
         );

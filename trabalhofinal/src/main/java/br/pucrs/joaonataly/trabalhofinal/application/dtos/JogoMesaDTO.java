@@ -40,18 +40,6 @@ public class JogoMesaDTO implements JogoDTO {
     public int getNumeroPecas() {
         return numeroPecas;
     }
-
-    @Override
-    public JogoMesaModel toModel() {
-        JogoMesaModel jogo = new JogoMesaModel(
-                getNome(),
-                getValorBase(),
-                getNumeroPecas(),
-                TipoMesaModel.valueOf(getTipoMesa().name())
-        );
-        return jogo;
-    }
-    
     
     // @Override
     // public static JogoDTO fromModel(JogoModel model) {

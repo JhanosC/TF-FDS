@@ -1,9 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.services;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.CadastrarAluguelUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.BuscaClienteIdUC;
-import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarClienteUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarEmpresarialUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.CadastrarIndividualUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.BuscaJogoIdUC;
@@ -19,8 +17,6 @@ import java.time.LocalDate;
 
 @Service
 public class InitService {
-
-    private CadastrarClienteUC cadastrarClienteUC;
     private CadastrarEmpresarialUC cadastrarEmpresarialUC;
     private CadastrarIndividualUC cadastrarIndividualUC;
     private CadastrarEletronicoUC cadastrarEletronicoUC;
@@ -32,7 +28,7 @@ public class InitService {
     public InitService(CadastrarEmpresarialUC cadastrarEmpresarialUC, CadastrarIndividualUC cadastrarIndividualUC,
                        CadastrarEletronicoUC cadastrarEletronicoUC, CadastrarMesaUC cadastrarMesaUC,
                        CadastrarAluguelUC cadastrarAluguelUC, BuscaJogoIdUC buscaJogoIdUC,
-                       BuscaClienteIdUC buscaClienteIdUC, CadastrarClienteUC cadastrarClienteUC) {
+                       BuscaClienteIdUC buscaClienteIdUC) {
         this.cadastrarEmpresarialUC = cadastrarEmpresarialUC;
         this.cadastrarIndividualUC = cadastrarIndividualUC;
         this.cadastrarEletronicoUC = cadastrarEletronicoUC;
@@ -40,21 +36,19 @@ public class InitService {
         this.cadastrarAluguelUC = cadastrarAluguelUC;
         this.buscaJogoIdUC = buscaJogoIdUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
-        this.cadastrarClienteUC = cadastrarClienteUC;
     }
 
     @Transactional
     public void cadastrarClientesEJogos() {
         // Clientes Individuais
-        //(int numero, String tipoCliente, String nome, String endereco, String cpf, String nomeFantasia, String cnpj)
-        cadastrarClienteUC.executar(new ClienteDTO(1, "INDIVIDUAL", "Ana Souza", "Rua das Flores, 123", "12345678901", null, null));
-        cadastrarClienteUC.executar(new ClienteDTO(2, "INDIVIDUAL", "Carlos Lima", "Rua Brasil, 321", "98765432101", null, null));
-        cadastrarClienteUC.executar(new ClienteDTO(3, "INDIVIDUAL", "Eduardo Oliveira", "Rua Indigo, 312", "98765678901", null, null));
+
+        cadastrarIndividualUC.executar(new IndividualModel("Ana Souza", "Rua das Flores, 123", "12345678901"));
+        cadastrarIndividualUC.executar(new IndividualModel("Carlos Lima", "Av. Brasil, 200", "98765432100"));
+        cadastrarIndividualUC.executar(new IndividualModel("Fernanda Reis", "Rua A, 111", "11122233344"));
 
         // Clientes Empresariais
-        cadastrarClienteUC.executar(new ClienteDTO(4, "EMPRESARIAL", "Joana Carolina", "Rua das Ortencias, 132", null, "Eletronicos Joana", "12345678901"));
-        cadastrarClienteUC.executar(new ClienteDTO(5, "EMPRESARIAL", "Sandra Santos", "Rua Carlos Oliveira, 213", null, "Games do Sul", "98765432101"));
-
+        cadastrarEmpresarialUC.executar(new EmpresarialModel("Supermercado Econômico", "Rua B, 222", "Econômico", "11222333444455"));
+        cadastrarEmpresarialUC.executar(new EmpresarialModel("Livraria Cultura", "Rua C, 333", "Cultura", "22334455667788"));
 
         // Jogos de Eletronico
         cadastrarEletronicoUC.executar(new JogoEletronicoModel("The Legend of Zelda: Breath of the Wild", 299.90, "Nintendo Switch", TipoEletronicoModel.AVENTURA));
@@ -77,22 +71,21 @@ public class InitService {
                 .orElseThrow(() -> new RuntimeException("Cliente ID 2 não encontrado"));
         var jogo1 = buscaJogoIdUC.executar(3)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 3 não encontrado"));
-                //public AluguelDTO(int identificador, int periodo, String dataInicial, ClienteDTO clienteDTO, JogoDTO jogoDTO)
-        var aluguel1 = new AluguelDTO(1, 5, LocalDate.of(2025, 6, 20), cliente1, jogo1);
+        var aluguel1 = new AluguelModel(5, LocalDate.of(2025, 6, 20), cliente1, jogo1);
         cadastrarAluguelUC.executar(aluguel1);
 
         var cliente2 = buscaClienteIdUC.executar(4)
                 .orElseThrow(() -> new RuntimeException("Cliente ID 4 não encontrado"));
         var jogo2 = buscaJogoIdUC.executar(7)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 7 não encontrado"));
-        var aluguel2 = new AluguelModel(2, 8, LocalDate.of(2025, 7, 21), cliente2, jogo2);
+        var aluguel2 = new AluguelModel(8, LocalDate.of(2025, 7, 21), cliente2, jogo2);
         cadastrarAluguelUC.executar(aluguel2);
 
         var cliente3 = buscaClienteIdUC.executar(5)
                 .orElseThrow(() -> new RuntimeException("Cliente ID 5 não encontrado"));
         var jogo3 = buscaJogoIdUC.executar(1)
                 .orElseThrow(() -> new RuntimeException("Jogo ID 1 não encontrado"));
-        var aluguel3 = new AluguelModel(2, 16, LocalDate.of(2025, 8, 20), cliente3, jogo3);
+        var aluguel3 = new AluguelModel(16, LocalDate.of(2025, 8, 20), cliente3, jogo3);
         cadastrarAluguelUC.executar(aluguel3);
     }
 }

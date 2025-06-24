@@ -11,6 +11,8 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
 import org.springframework.web.bind.annotation.*;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -39,10 +41,6 @@ public class AcmeGamesController {
         this.listaTodosAlugueisUC = listaTodosAlugueisUC;
         this.cadastrarJogoUC = cadastrarJogoUC;
         this.cadastrarClienteUC = cadastrarClienteUC;
-    }
-    @GetMapping("/")
-    public String hello() {
-        return "API ACME Games no ar!";
     }
     @PostMapping("/validajogo")
     public boolean validaJogo(@RequestBody JogoCodigoDTO codigoDTO) {
@@ -76,9 +74,9 @@ public class AcmeGamesController {
     public boolean cadastrarCliente(@RequestBody ClienteDTO request) {
         return cadastrarClienteUC.executar(request);
     }
-    // @PostMapping("cadastro/cadaluguel")
-    // public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
-    //     return cadastrarAluguelUC.executar(request);
-    // }
+    @PostMapping("cadastro/cadaluguel")
+    public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
+        return cadastrarAluguelUC.executar(request);
+    }
     
 }

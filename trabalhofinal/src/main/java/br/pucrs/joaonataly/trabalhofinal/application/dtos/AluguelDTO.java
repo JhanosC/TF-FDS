@@ -1,7 +1,5 @@
 package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
-import java.time.LocalDate;
-
 import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 
 public class AluguelDTO {
@@ -9,11 +7,11 @@ public class AluguelDTO {
     private int clienteNumero;
     private int jogoCodigo;
     private int periodo;
-    private LocalDate dataInicial;
+    private String dataInicial;
     private ClienteDTO clienteDTO;
     private JogoDTO jogoDTO;
 
-    public AluguelDTO(int identificador, int periodo, LocalDate dataInicial, ClienteDTO clienteDTO, JogoDTO jogoDTO) {
+    public AluguelDTO(int identificador, int periodo, String dataInicial, ClienteDTO clienteDTO, JogoDTO jogoDTO) {
         this.identificador = identificador;
         this.periodo = periodo;
         this.dataInicial = dataInicial;
@@ -55,11 +53,11 @@ public class AluguelDTO {
         this.periodo = periodo;
     }
 
-    public LocalDate getDataInicial() {
+    public String getDataInicial() {
         return dataInicial;
     }
 
-    public void setDataInicial(LocalDate dataInicial) {
+    public void setDataInicial(String dataInicial) {
         this.dataInicial = dataInicial;
     }
 
@@ -80,7 +78,7 @@ public class AluguelDTO {
         return new AluguelModel(
                 identificador,
                 periodo,
-                dataInicial,
+                java.time.LocalDate.parse(dataInicial),
                 clienteDTO.toModel(),
                 jogoDTO.toModel()
         );
