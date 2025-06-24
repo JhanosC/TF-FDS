@@ -2,7 +2,8 @@ package br.pucrs.joaonataly.trabalhofinal.presentation;
 
 import java.util.List;
 
-import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.*;
+import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.BuscaAluguelIdUC;
+import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.ListaTodosAlugueisUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.*;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo.*;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
@@ -11,15 +12,12 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
 import org.springframework.web.bind.annotation.*;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 @RequestMapping("/acmegames")
 public class AcmeGamesController {
 
-    private final ListaTodosJogosUC listaTodosJogosUC;
+    private final  ListaTodosJogosUC listaTodosJogosUC;
     private final BuscaClienteIdUC buscaClienteIdUC;
     private final BuscaJogoIdUC buscaJogoIdUC;
     private final BuscaAluguelIdUC buscaAluguelIdUC;
@@ -27,12 +25,10 @@ public class AcmeGamesController {
     private final ListaTodosAlugueisUC listaTodosAlugueisUC;
     private final CadastrarJogoUC cadastrarJogoUC;
     private final CadastrarClienteUC cadastrarClienteUC;
-    private final CadastrarAluguelUC cadastrarAluguelUC;
 
     public AcmeGamesController(ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
                                BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
-                               CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC) {
-        this.cadastrarAluguelUC = cadastrarAluguelUC;
+                               CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC) {
         this.listaTodosJogosUC = listaTodosJogosUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
         this.listaTodosClientesUC = listaTodosClientesUC;
@@ -51,19 +47,19 @@ public class AcmeGamesController {
         return  buscaClienteIdUC.executar(numeroDTO.getNumero()).isPresent();
     }
     @PostMapping("/validaaluguel")
-    public boolean validaAluguel(@RequestBody AluguelIndentificadorDTO identificadorDTO) {
+    public boolean validaAluguel(@RequestBody AluguelIdentificadorDTO identificadorDTO) {
         return  buscaAluguelIdUC.executar(identificadorDTO.getIdentificador()).isPresent();
     }
     @GetMapping("cadastro/listajogos")
-    public List<JogoDTO> listarTodosJogos() {
+    public List<JogoModel> listarTodosJogos() {
         return listaTodosJogosUC.executar();
     }
     @GetMapping("cadastro/listaclientes")
-    public List<ClienteDTO> listaTodosClientes() {
+    public List<ClienteModel> listaTodosClientes() {
         return listaTodosClientesUC.executar();
     }
     @GetMapping("cadastro/listaalugueis")
-    public List<AluguelDTO> listaTodosAlugueis() {
+    public List<AluguelModel> listaTodosAlugueis() {
         return listaTodosAlugueisUC.executar();
     }
     @PostMapping("cadastro/cadjogo")
@@ -71,12 +67,7 @@ public class AcmeGamesController {
         return cadastrarJogoUC.executar(request);
     }
     @PostMapping("cadastro/cadcliente")
-    public boolean cadastrarCliente(@RequestBody ClienteDTO request) {
+    public boolean cadastrarCliente(@RequestBody ClienteRequestDTO request) {
         return cadastrarClienteUC.executar(request);
     }
-    @PostMapping("cadastro/cadaluguel")
-    public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
-        return cadastrarAluguelUC.executar(request);
-    }
-    
 }

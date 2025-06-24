@@ -1,6 +1,5 @@
 package br.pucrs.joaonataly.trabalhofinal.infrastructure.repositoryImpl;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
@@ -54,7 +53,8 @@ public class AluguelRepository implements IAluguelRepository {
                 entity.getPeriodo(),
                 entity.getDataInicial(),
                 clienteModel,
-                jogoModel
+                jogoModel,
+                entity.getValorFinal()
         );
     }
     private Aluguel toEntity(AluguelModel model){

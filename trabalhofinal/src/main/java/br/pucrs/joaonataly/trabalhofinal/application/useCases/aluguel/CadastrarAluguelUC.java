@@ -1,6 +1,5 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IAluguelRepository;
 import br.pucrs.joaonataly.trabalhofinal.domain.services.AluguelService;
@@ -14,7 +13,9 @@ public class CadastrarAluguelUC {
         this.aluguelRepository = aluguelRepository;
         this.aluguelService = aluguelService;
     }
-    public boolean executar(AluguelDTO aluguelDTO) {
-        return aluguelRepository.addAluguel(aluguelDTO.toModel());
+    public boolean executar(AluguelModel aluguelModel) {
+        double valorFinal = AluguelService.calcularValorFinal(aluguelModel);
+        aluguelModel.setValorFinal(valorFinal); // ou outro setter que você usar
+        return aluguelRepository.addAluguel(aluguelModel);
     }
 }

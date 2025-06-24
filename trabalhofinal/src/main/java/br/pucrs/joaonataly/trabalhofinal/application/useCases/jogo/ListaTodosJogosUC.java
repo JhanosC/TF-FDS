@@ -22,9 +22,7 @@ public class ListaTodosJogosUC {
         this.jogoRepository = jogoRepository;
     }
 
-    public List<JogoDTO> executar() {
-        return jogoRepository.getAllJogos().stream()
-                .map(jogo -> jogo.toDTO())
-                .toList();
+    public List<JogoModel> executar() {
+        return jogoRepository.getAllJogos();
     }
 }

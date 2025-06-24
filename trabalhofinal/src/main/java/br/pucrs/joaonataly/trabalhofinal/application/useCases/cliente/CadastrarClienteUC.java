@@ -1,6 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteDTO;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteRequestDTO;
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.JogoRequestDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoEletronicoModel;
@@ -18,7 +18,7 @@ public class CadastrarClienteUC {
         this.cadastrarEmpresarialUC = cadastrarEmpresarialUC;
     }
 
-    public boolean executar(ClienteDTO request) {
+    public boolean executar(ClienteRequestDTO request) {
         IndividualModel individual = null;
         EmpresarialModel empresarial = null;
 

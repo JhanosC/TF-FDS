@@ -5,5 +5,5 @@ public interface JogoDTO {
     String getNome();
     double getValorBase();
     int getCodigo();
-    JogoModel toModel();
+    // JogoDTO fromModel(JogoModel model);
 }

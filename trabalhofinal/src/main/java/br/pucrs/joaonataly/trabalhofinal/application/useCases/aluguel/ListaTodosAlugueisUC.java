@@ -1,7 +1,5 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelIndentificadorDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IAluguelRepository;
@@ -17,8 +15,7 @@ public class ListaTodosAlugueisUC {
         this.aluguelRepository = aluguelRepository;
     }
 
-    public List<AluguelDTO> executar() {
-        return aluguelRepository.getAllAluguel().stream()
-                .map(aluguel -> aluguel.toDTO()).toList();
+    public List<AluguelModel> executar() {
+        return aluguelRepository.getAllAluguel();
     }
 }
