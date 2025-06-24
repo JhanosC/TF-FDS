@@ -191,16 +191,7 @@ public class AluguelRepository implements IAluguelRepository {
     @Override
     public Optional<AluguelModel> getAluguelValorFinal(int indenficadorAluguel){
         return springAluguel.findById(indenficadorAluguel)
-                .map(aluguel -> {
-                    AluguelDTO aluguelDTO = new AluguelDTO();
-                    aluguelDTO.setIdentificador(aluguel.getIdentificador());
-                    aluguelDTO.setPeriodo(aluguel.getPeriodo());
-                    aluguelDTO.setDataInicial(aluguel.getDataInicial());
-                    aluguelDTO.setValorFinal(aluguel.getValorFinal());
-                    aluguelDTO.setCliente(toModel(aluguel.getCliente()));
-                    aluguelDTO.setJogo(toModel(aluguel.getJogo()));
-                    return aluguelDTO;
-                });
+                .map(this::toModel);
     }
 
 }

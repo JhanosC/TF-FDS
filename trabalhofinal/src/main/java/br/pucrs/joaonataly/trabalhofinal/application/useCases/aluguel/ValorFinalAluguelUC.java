@@ -1,6 +1,8 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel;
 
-import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelIndentificadorDTO;
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelValorFinalDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IAluguelRepository;
@@ -24,6 +26,6 @@ public class ValorFinalAluguelUC {
 
     public Optional<AluguelValorFinalDTO> executar(int codigoAluguel) {
         return aluguelRepository.getAluguelValorFinal(codigoAluguel)
-        .map(a -> AluguelValorFinalDTO.fromModel(a));
+        .map(aluguel -> AluguelValorFinalDTO.fromModel(aluguel));
     }
 }

@@ -68,8 +68,8 @@ public class AluguelValorFinalDTO {
         this.valorFinal = valorFinal;
     }
     
-    public static AluguelJogoValorDTO fromModel(AluguelModel aluguel) {
-        return  new AluguelJogoValorDTO(
+    public static AluguelValorFinalDTO fromModel(AluguelModel aluguel) {
+        return  new AluguelValorFinalDTO(
                 aluguel.getIdentificador(),
                 aluguel.getPeriodo(),
                 aluguel.getDataInicial(),
