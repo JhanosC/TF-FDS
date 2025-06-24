@@ -99,7 +99,7 @@ public class AcmeGamesController {
         return listaAlugueisJogoUC.executar(codigo);
     }
     @GetMapping("aluguel/valorjogo/{codigo}")
-    public Optional<AluguelDTO> getValorJogo(@PathVariable int codigo) {
+    public Optional<AluguelValorDTO> getValorJogo(@PathVariable int codigo) {
         return valorAluguelJogoUC.executar(codigo);
     }
     
