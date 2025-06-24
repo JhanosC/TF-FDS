@@ -26,7 +26,7 @@ public class CadastrarJogoUC {
                     request.getNome(),
                     request.getValorBase(),
                     request.getPlataforma(),
-                    TipoEletronicoModel.valueOf(request.getTipoEletronico().toUpperCase())
+                    TipoEletronicoModel.valueOf(request.getTipoEletronico().toString())
             );
             eletronico = cadastrarEletronicoUC.executar(jogo);
         } else if ("MESA".equalsIgnoreCase(request.getTipoJogo())) {
@@ -34,7 +34,7 @@ public class CadastrarJogoUC {
                     request.getNome(),
                     request.getValorBase(),
                     request.getNumeroPecas(),
-                    TipoMesaModel.valueOf(request.getTipoMesa().toUpperCase())
+                    TipoMesaModel.valueOf(request.getTipoMesa().toString())
             );
             mesa = cadastrarMesaUC.executar(jogo);
         } else {
