@@ -9,4 +9,5 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoModel;
 public interface IJogoRepository {
     List<JogoModel> getAllJogos();
     Optional<JogoModel> findById(int codigo);
+    
 }

@@ -2,7 +2,10 @@ package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
 import java.time.LocalDate;
 
-import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
+import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.BuscaClienteIdUC;
+import br.pucrs.joaonataly.trabalhofinal.domain.model.*;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.BD.entities.Cliente;
+import br.pucrs.joaonataly.trabalhofinal.infrastructure.BD.entities.Jogo;
 
 public class AluguelDTO {
     private int identificador;
@@ -10,17 +13,13 @@ public class AluguelDTO {
     private int jogoCodigo;
     private int periodo;
     private LocalDate dataInicial;
-    private ClienteDTO clienteDTO;
-    private JogoDTO jogoDTO;
 
-    public AluguelDTO(int identificador, int periodo, LocalDate dataInicial, ClienteDTO clienteDTO, JogoDTO jogoDTO) {
+    public AluguelDTO(int identificador, int periodo, LocalDate dataInicial, int clienteNumero, int jogoCodigo) {
         this.identificador = identificador;
         this.periodo = periodo;
         this.dataInicial = dataInicial;
-        this.clienteDTO = clienteDTO;
-        this.jogoDTO = jogoDTO;
-        this.clienteNumero = clienteDTO.getNumero();
-        this.jogoCodigo = jogoDTO.getCodigo();
+        this.clienteNumero = clienteNumero;
+        this.jogoCodigo = jogoCodigo;
     }
 
     public int getIdentificador() {
@@ -63,26 +62,13 @@ public class AluguelDTO {
         this.dataInicial = dataInicial;
     }
 
-    public ClienteDTO getClienteDTO() {
-        return clienteDTO;
-    }
-    public void setClienteDTO(ClienteDTO clienteDTO) {
-        this.clienteDTO = clienteDTO;
-    }
-    public JogoDTO getJogoDTO() {
-        return jogoDTO;
-    }
-    public void setJogoDTO(JogoDTO jogoDTO) {
-        this.jogoDTO = jogoDTO;
-    }
-
-    public AluguelModel toModel() {
+    public AluguelModel toModel(ClienteModel cliente, JogoModel jogo) {
         return new AluguelModel(
                 identificador,
                 periodo,
                 dataInicial,
-                clienteDTO.toModel(),
-                jogoDTO.toModel()
+                cliente,
+                jogo
         );
     }
 }

@@ -66,8 +66,8 @@ public class AluguelModel {
                 this.identificador,
                 this.periodo,
                 this.dataInicial,
-                this.cliente.toDTO(),
-                this.jogo.toDTO()
+                this.cliente.getNumero(),
+                this.jogo.getCodigo()
         );
     }
 }

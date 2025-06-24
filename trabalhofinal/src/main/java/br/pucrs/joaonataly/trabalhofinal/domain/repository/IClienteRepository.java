@@ -7,9 +7,7 @@ import java.util.Optional;
 
 
 public interface IClienteRepository {
-
     Optional<ClienteModel> findById(int numero);
-
-
     List<ClienteModel> getAllClientes();
+    
 }
