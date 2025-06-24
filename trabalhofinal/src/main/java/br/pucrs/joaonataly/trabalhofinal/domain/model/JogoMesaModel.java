@@ -24,6 +24,14 @@ public class JogoMesaModel extends JogoModel {
     public int getNumeroPecas() {
         return numeroPecas;
     }
+    @Override
+    public double getValorBase() {
+        if(tipo == TipoMesaModel.TABULEIRO) {
+            return super.getValorBase() * numeroPecas;
+        }else{
+            return super.getValorBase() * 1.2;
+        }
+    }
 
     @Override
     public JogoDTO toDTO(){

@@ -28,6 +28,15 @@ public class JogoEletronicoModel extends JogoModel {
     }
 
     @Override
+    public double getValorBase() {
+        return switch (tipo) {
+            case AVENTURA -> super.getValorBase() * 1.05;
+            case ESTRATEGIA -> super.getValorBase() * 1.15;
+            case SIMULACAO -> super.getValorBase() * 1.25;
+        };
+    }
+
+    @Override
     public JogoDTO toDTO(){
         return new JogoEletronicoDTO(
                 getNome(),

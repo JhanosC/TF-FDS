@@ -172,4 +172,20 @@ public class AluguelRepository implements IAluguelRepository {
         .toList();
     }
 
+    @Override
+    public List<AluguelModel> getAluguelModelsDeJogo(int codigoJogo) {
+        return springAluguel.findAll().stream()
+        .filter(c -> c.getJogo().getCodigo() == codigoJogo)
+        .map(this::toModel)
+        .toList();
+    }
+    
+    @Override
+    public Optional<AluguelModel> getValorAluguelJogo(int codigoJogo){
+        return springAluguel.findAll().stream()
+                .filter(c -> c.getJogo().getCodigo() == codigoJogo)
+                .findFirst()
+                .map(this::toModel);
+    }
+
 }

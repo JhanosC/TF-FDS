@@ -46,7 +46,21 @@ public class AluguelModel {
         return jogo;
     }
     public double getValorFinal() {
-        return valorFinal;
+        if (cliente instanceof IndividualModel){
+            if (periodo < 7) {
+                return jogo.getValorBase() * periodo * 0.9;
+            } else if (periodo <= 14) {
+                return jogo.getValorBase() * periodo * 0.8;
+            } else{
+                return jogo.getValorBase() * periodo * 0.75;
+            }
+        }else{
+            if (jogo instanceof JogoEletronicoModel) {
+                return jogo.getValorBase() * periodo;
+            }else {
+                return jogo.getValorBase() * periodo * 0.85;
+                }
+            }
     }
 
     public void setValorFinal(double valorFinal) {

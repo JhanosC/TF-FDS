@@ -1,6 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.presentation;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.*;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente.*;
@@ -11,6 +12,7 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
 import org.springframework.web.bind.annotation.*;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+
 
 
 @RestController
@@ -27,12 +29,14 @@ public class AcmeGamesController {
     private final CadastrarClienteUC cadastrarClienteUC;
     private final CadastrarAluguelUC cadastrarAluguelUC;
     private final ListaAlugueisClienteUC listaAlugueisClienteUC;
+    private final ListaAlugueisJogoUC listaAlugueisJogoUC;
+    private final ValorAluguelJogoUC valorAluguelJogoUC;
 
     public AcmeGamesController(
         ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
         BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
         CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC,
-        ListaAlugueisClienteUC listaAlugueisClienteUC) {
+        ListaAlugueisClienteUC listaAlugueisClienteUC, ListaAlugueisJogoUC listaAlugueisJogoUC, ValorAluguelJogoUC valorAluguelJogoUC) {
         this.cadastrarAluguelUC = cadastrarAluguelUC;
         this.listaTodosJogosUC = listaTodosJogosUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
@@ -43,6 +47,8 @@ public class AcmeGamesController {
         this.cadastrarJogoUC = cadastrarJogoUC;
         this.cadastrarClienteUC = cadastrarClienteUC;
         this.listaAlugueisClienteUC = listaAlugueisClienteUC;
+        this.listaAlugueisJogoUC = listaAlugueisJogoUC;
+        this.valorAluguelJogoUC = valorAluguelJogoUC;
     }
     @GetMapping("/")
     public String hello() {
@@ -88,5 +94,15 @@ public class AcmeGamesController {
     public List<AluguelDTO> listarAlugueisPorCliente(@PathVariable int numero) {
         return listaAlugueisClienteUC.executar(numero);
     }
+    @GetMapping("jogo/aluguel/{codigo}")
+    public List<AluguelDTO> getMethodName(@PathVariable int codigo) {
+        return listaAlugueisJogoUC.executar(codigo);
+    }
+    @GetMapping("aluguel/valorjogo/{codigo}")
+    public Optional<AluguelDTO> getValorJogo(@PathVariable int codigo) {
+        return valorAluguelJogoUC.executar(codigo);
+    }
+    
+    
     
 }
