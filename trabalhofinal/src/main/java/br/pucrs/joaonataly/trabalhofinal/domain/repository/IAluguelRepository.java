@@ -1,5 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.domain.repository;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.AluguelDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoEletronicoModel;
