@@ -1,6 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.application.dtos;
 
-public class AluguelIndentificadorDTO {
+public class AluguelIdentificadorDTO {
     private int identificador;
 
     public int getIdentificador() { return identificador; }
