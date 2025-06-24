@@ -1,5 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.infrastructure.repositoryImpl;
 
+import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.EmpresarialModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.IndividualModel;
@@ -55,5 +56,7 @@ public class ClienteRepository implements IClienteRepository {
             throw new IllegalArgumentException("Tipo de cliente desconhecido: " + entity.getClass().getSimpleName());
         }
     }
+
+    
 }
 

@@ -26,10 +26,13 @@ public class AcmeGamesController {
     private final CadastrarJogoUC cadastrarJogoUC;
     private final CadastrarClienteUC cadastrarClienteUC;
     private final CadastrarAluguelUC cadastrarAluguelUC;
+    private final ListaAlugueisClienteUC listaAlugueisClienteUC;
 
-    public AcmeGamesController(ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
-                               BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
-                               CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC) {
+    public AcmeGamesController(
+        ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
+        BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
+        CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC,
+        ListaAlugueisClienteUC listaAlugueisClienteUC) {
         this.cadastrarAluguelUC = cadastrarAluguelUC;
         this.listaTodosJogosUC = listaTodosJogosUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
@@ -39,6 +42,7 @@ public class AcmeGamesController {
         this.listaTodosAlugueisUC = listaTodosAlugueisUC;
         this.cadastrarJogoUC = cadastrarJogoUC;
         this.cadastrarClienteUC = cadastrarClienteUC;
+        this.listaAlugueisClienteUC = listaAlugueisClienteUC;
     }
     @GetMapping("/")
     public String hello() {
@@ -76,9 +80,13 @@ public class AcmeGamesController {
     public boolean cadastrarCliente(@RequestBody ClienteDTO request) {
         return cadastrarClienteUC.executar(request);
     }
-    // @PostMapping("cadastro/cadaluguel")
-    // public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
-    //     return cadastrarAluguelUC.executar(request);
-    // }
+    @PostMapping("cadastro/cadaluguel")
+    public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
+        return cadastrarAluguelUC.executar(request);
+    }
+    @GetMapping("cliente/aluguel/{numero}")
+    public List<AluguelDTO> listarAlugueisPorCliente(@PathVariable int numero) {
+        return listaAlugueisClienteUC.executar(numero);
+    }
     
 }

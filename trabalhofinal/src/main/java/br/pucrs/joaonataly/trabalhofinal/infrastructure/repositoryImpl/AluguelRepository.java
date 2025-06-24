@@ -164,4 +164,12 @@ public class AluguelRepository implements IAluguelRepository {
         }
     }
 
+    @Override
+    public List<AluguelModel> getAluguelModelsDeCliente(int numeroCliente) {
+        return springAluguel.findAll().stream()
+        .filter(c -> c.getCliente().getNumero() == numeroCliente)
+        .map(this::toModel)
+        .toList();
+    }
+
 }

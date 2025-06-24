@@ -12,4 +12,5 @@ public interface IAluguelRepository {
     Optional<AluguelModel> findById(int identificador);
     List<AluguelModel> getAllAluguel();
     boolean addAluguel(AluguelModel aluguelModel);
+    List<AluguelModel> getAluguelModelsDeCliente(int numeroCliente);
 }
