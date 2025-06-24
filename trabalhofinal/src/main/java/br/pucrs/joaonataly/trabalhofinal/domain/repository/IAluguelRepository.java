@@ -15,4 +15,5 @@ public interface IAluguelRepository {
     List<AluguelModel> getAluguelModelsDeCliente(int numeroCliente);
     List<AluguelModel> getAluguelModelsDeJogo(int codigoJogo);
     Optional<AluguelModel> getValorAluguelJogo(int codigoJogo);
+    Optional<AluguelModel> getAluguelValorFinal(int indenficadorAluguel);
 }

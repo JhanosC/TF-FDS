@@ -3,7 +3,7 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.AluguelModel;
 
 import java.time.LocalDate;
 
-public class AluguelValorDTO {
+public class AluguelJogoValorDTO {
     private int identificador;
     private int clienteNumero;
     private int jogoCodigo;
@@ -11,7 +11,7 @@ public class AluguelValorDTO {
     private LocalDate dataInicial;
     private double valorJogo;
     
-    public AluguelValorDTO(int identificador, int periodo, LocalDate dataInicial, int clienteNumero, int jogoCodigo, double valorJogo) {
+    public AluguelJogoValorDTO(int identificador, int periodo, LocalDate dataInicial, int clienteNumero, int jogoCodigo, double valorJogo) {
         this.identificador = identificador;
         this.periodo = periodo;
         this.dataInicial = dataInicial;
@@ -68,14 +68,26 @@ public class AluguelValorDTO {
         this.valorJogo = valorJogo;
     }
     
-    public static AluguelValorDTO fromModel(AluguelModel aluguel) {
-        return  new AluguelValorDTO(
+    public static AluguelJogoValorDTO fromModel(AluguelModel aluguel) {
+        return  new AluguelJogoValorDTO(
                 aluguel.getIdentificador(),
                 aluguel.getPeriodo(),
                 aluguel.getDataInicial(),
                 aluguel.getCliente().getNumero(),
                 aluguel.getJogo().getCodigo(),
-                aluguel.getValorFinal()
+                aluguel.getJogo().getValorBase()
         );
+    }
+
+    @Override
+    public String toString() {
+        return "AluguelValorFinalDTO{" +
+                "identificador=" + identificador +
+                ", clienteNumero=" + clienteNumero +
+                ", jogoCodigo=" + jogoCodigo +
+                ", periodo=" + periodo +
+                ", dataInicial=" + dataInicial +
+                ", valorJogo=" + valorJogo +
+                '}';
     }
 }

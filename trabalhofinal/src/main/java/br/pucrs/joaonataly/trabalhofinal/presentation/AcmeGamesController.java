@@ -12,6 +12,9 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
 import org.springframework.web.bind.annotation.*;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -31,12 +34,14 @@ public class AcmeGamesController {
     private final ListaAlugueisClienteUC listaAlugueisClienteUC;
     private final ListaAlugueisJogoUC listaAlugueisJogoUC;
     private final ValorAluguelJogoUC valorAluguelJogoUC;
+    private final ValorFinalAluguelUC valorFinalAluguelUC;
 
     public AcmeGamesController(
         ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
         BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
         CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC,
-        ListaAlugueisClienteUC listaAlugueisClienteUC, ListaAlugueisJogoUC listaAlugueisJogoUC, ValorAluguelJogoUC valorAluguelJogoUC) {
+        ListaAlugueisClienteUC listaAlugueisClienteUC, ListaAlugueisJogoUC listaAlugueisJogoUC, ValorAluguelJogoUC valorAluguelJogoUC,
+        ValorFinalAluguelUC valorFinalAluguelUC) {
         this.cadastrarAluguelUC = cadastrarAluguelUC;
         this.listaTodosJogosUC = listaTodosJogosUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
@@ -49,6 +54,7 @@ public class AcmeGamesController {
         this.listaAlugueisClienteUC = listaAlugueisClienteUC;
         this.listaAlugueisJogoUC = listaAlugueisJogoUC;
         this.valorAluguelJogoUC = valorAluguelJogoUC;
+        this.valorFinalAluguelUC = valorFinalAluguelUC;
     }
     @GetMapping("/")
     public String hello() {
@@ -99,8 +105,12 @@ public class AcmeGamesController {
         return listaAlugueisJogoUC.executar(codigo);
     }
     @GetMapping("aluguel/valorjogo/{codigo}")
-    public Optional<AluguelValorDTO> getValorJogo(@PathVariable int codigo) {
+    public Optional<AluguelJogoValorDTO> getValorJogo(@PathVariable int codigo) {
         return valorAluguelJogoUC.executar(codigo);
+    }
+    @GetMapping("aluguel/valorfinal/{identificador}")
+    public Optional<AluguelJogoValorDTO> getValorFinalAluguel(@PathVariable int identificador) {
+        return  valorFinalAluguelUC.executar(identificador);
     }
     
     
