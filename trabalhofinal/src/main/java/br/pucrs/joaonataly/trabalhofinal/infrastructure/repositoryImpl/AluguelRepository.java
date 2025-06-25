@@ -164,4 +164,34 @@ public class AluguelRepository implements IAluguelRepository {
         }
     }
 
+    @Override
+    public List<AluguelModel> getAluguelModelsDeCliente(int numeroCliente) {
+        return springAluguel.findAll().stream()
+        .filter(c -> c.getCliente().getNumero() == numeroCliente)
+        .map(this::toModel)
+        .toList();
+    }
+
+    @Override
+    public List<AluguelModel> getAluguelModelsDeJogo(int codigoJogo) {
+        return springAluguel.findAll().stream()
+        .filter(c -> c.getJogo().getCodigo() == codigoJogo)
+        .map(this::toModel)
+        .toList();
+    }
+    
+    @Override
+    public Optional<AluguelModel> getValorAluguelJogo(int codigoJogo){
+        return springAluguel.findAll().stream()
+                .filter(c -> c.getJogo().getCodigo() == codigoJogo)
+                .findFirst()
+                .map(this::toModel);
+    }
+
+    @Override
+    public Optional<AluguelModel> getAluguelValorFinal(int indenficadorAluguel){
+        return springAluguel.findById(indenficadorAluguel)
+                .map(this::toModel);
+    }
+
 }

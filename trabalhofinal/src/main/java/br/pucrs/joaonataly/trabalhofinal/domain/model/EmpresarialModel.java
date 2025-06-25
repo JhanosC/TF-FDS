@@ -22,4 +22,14 @@ public class EmpresarialModel extends ClienteModel {
         return nomeFantasia;
     }
     
+    @Override
+    public String toString() {
+        return "{" +
+                "cnpj='" + cnpj + '\'' +
+                ", nomeFantasia='" + nomeFantasia + '\'' +
+                ", numero=" + getNumero() +
+                ", nome='" + getNome() + '\'' +
+                ", endereco='" + getEndereco() + '\'' +
+                '}';
+    }
 }

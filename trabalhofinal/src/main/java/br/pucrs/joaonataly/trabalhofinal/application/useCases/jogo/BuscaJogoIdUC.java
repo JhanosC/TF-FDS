@@ -1,5 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.jogo;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.JogoDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.JogoModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IJogoRepository;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,8 @@ public class BuscaJogoIdUC {
         this.jogoRepository = jogoRepository;
     }
 
-    public Optional<JogoModel> executar(int id) {
-        return jogoRepository.findById(id);
+    public Optional<JogoDTO> executar(int id) {
+        return jogoRepository.findById(id)
+                .map(JogoModel::toDTO);
     }
 }

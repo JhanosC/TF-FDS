@@ -1,6 +1,7 @@
 package br.pucrs.joaonataly.trabalhofinal.presentation;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.BuscaAluguelIdUC;
 import br.pucrs.joaonataly.trabalhofinal.application.useCases.aluguel.ListaTodosAlugueisUC;
@@ -12,6 +13,10 @@ import br.pucrs.joaonataly.trabalhofinal.domain.model.ENUM.TipoMesaModel;
 import org.springframework.web.bind.annotation.*;
 
 import br.pucrs.joaonataly.trabalhofinal.application.dtos.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 @RequestMapping("/acmegames")
@@ -25,10 +30,26 @@ public class AcmeGamesController {
     private final ListaTodosAlugueisUC listaTodosAlugueisUC;
     private final CadastrarJogoUC cadastrarJogoUC;
     private final CadastrarClienteUC cadastrarClienteUC;
+<<<<<<< HEAD
 
     public AcmeGamesController(ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
                                BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
                                CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC) {
+=======
+    private final CadastrarAluguelUC cadastrarAluguelUC;
+    private final ListaAlugueisClienteUC listaAlugueisClienteUC;
+    private final ListaAlugueisJogoUC listaAlugueisJogoUC;
+    private final ValorAluguelJogoUC valorAluguelJogoUC;
+    private final ValorFinalAluguelUC valorFinalAluguelUC;
+
+    public AcmeGamesController(
+        ListaTodosJogosUC listaTodosJogosUC, BuscaClienteIdUC buscaClienteIdUC, ListaTodosClientesUC listaTodosClientesUC,
+        BuscaJogoIdUC buscaJogoIdUC, BuscaAluguelIdUC buscaAluguelIdUC,ListaTodosAlugueisUC listaTodosAlugueisUC,
+        CadastrarJogoUC cadastrarJogoUC, CadastrarClienteUC cadastrarClienteUC, CadastrarAluguelUC cadastrarAluguelUC,
+        ListaAlugueisClienteUC listaAlugueisClienteUC, ListaAlugueisJogoUC listaAlugueisJogoUC, ValorAluguelJogoUC valorAluguelJogoUC,
+        ValorFinalAluguelUC valorFinalAluguelUC) {
+        this.cadastrarAluguelUC = cadastrarAluguelUC;
+>>>>>>> Correcao
         this.listaTodosJogosUC = listaTodosJogosUC;
         this.buscaClienteIdUC = buscaClienteIdUC;
         this.listaTodosClientesUC = listaTodosClientesUC;
@@ -37,6 +58,10 @@ public class AcmeGamesController {
         this.listaTodosAlugueisUC = listaTodosAlugueisUC;
         this.cadastrarJogoUC = cadastrarJogoUC;
         this.cadastrarClienteUC = cadastrarClienteUC;
+        this.listaAlugueisClienteUC = listaAlugueisClienteUC;
+        this.listaAlugueisJogoUC = listaAlugueisJogoUC;
+        this.valorAluguelJogoUC = valorAluguelJogoUC;
+        this.valorFinalAluguelUC = valorFinalAluguelUC;
     }
     @PostMapping("/validajogo")
     public boolean validaJogo(@RequestBody JogoCodigoDTO codigoDTO) {
@@ -70,4 +95,30 @@ public class AcmeGamesController {
     public boolean cadastrarCliente(@RequestBody ClienteRequestDTO request) {
         return cadastrarClienteUC.executar(request);
     }
+<<<<<<< HEAD
+=======
+    @PostMapping("cadastro/cadaluguel")
+    public boolean cadastrarAluguel(@RequestBody AluguelDTO request) {
+        return cadastrarAluguelUC.executar(request);
+    }
+    @GetMapping("cliente/aluguel/{numero}")
+    public List<AluguelDTO> listarAlugueisPorCliente(@PathVariable int numero) {
+        return listaAlugueisClienteUC.executar(numero);
+    }
+    @GetMapping("jogo/aluguel/{codigo}")
+    public List<AluguelDTO> getMethodName(@PathVariable int codigo) {
+        return listaAlugueisJogoUC.executar(codigo);
+    }
+    @GetMapping("aluguel/valorjogo/{codigo}")
+    public Optional<AluguelJogoValorDTO> getValorJogo(@PathVariable int codigo) {
+        return valorAluguelJogoUC.executar(codigo);
+    }
+    @GetMapping("aluguel/valorfinal/{identificador}")
+    public Optional<AluguelValorFinalDTO> getValorFinalAluguel(@PathVariable int identificador) {
+        return  valorFinalAluguelUC.executar(identificador);
+    }
+    
+    
+    
+>>>>>>> Correcao
 }

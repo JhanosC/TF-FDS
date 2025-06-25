@@ -1,5 +1,6 @@
 package br.pucrs.joaonataly.trabalhofinal.application.useCases.cliente;
 
+import br.pucrs.joaonataly.trabalhofinal.application.dtos.ClienteDTO;
 import br.pucrs.joaonataly.trabalhofinal.domain.model.ClienteModel;
 import br.pucrs.joaonataly.trabalhofinal.domain.repository.IClienteRepository;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,9 @@ public class BuscaClienteIdUC {
         this.clienteRepository = clienteRepository;
     }
 
-    public Optional<ClienteModel> executar(int id) {
-        return clienteRepository.findById(id);
+    public Optional<ClienteDTO> executar(int id) {
+        return clienteRepository.findById(id)
+                .map(ClienteModel::toDTO);
     }
 
 }
