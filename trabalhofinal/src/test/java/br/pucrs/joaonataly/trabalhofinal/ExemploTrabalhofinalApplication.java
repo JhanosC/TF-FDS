@@ -76,7 +76,7 @@ public class ExemploTrabalhofinalApplication {
     public void setUp() {
         cliente = new ClienteDTO(99, "INDIVIDUAL", "Individual Teste", "Rua Teste, 123",
         "123456789", null, null);
-        jogo = new JogoRequestDTO("Jogo Teste", 100.0, "PC",
+        jogo = new JogoRequestDTO(1,"Jogo Teste", 100.0, "PC",
             TipoEletronicoModel.ESTRATEGIA, null, null);
     }
 

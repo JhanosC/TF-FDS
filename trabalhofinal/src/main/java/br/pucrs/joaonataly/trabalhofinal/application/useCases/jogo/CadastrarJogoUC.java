@@ -11,13 +11,19 @@ import org.springframework.stereotype.Service;
 public class CadastrarJogoUC {
     private final CadastrarEletronicoUC cadastrarEletronicoUC;
     private final CadastrarMesaUC cadastrarMesaUC;
+    private final BuscaJogoIdUC buscaJogoIdUC;
 
-    public CadastrarJogoUC(CadastrarEletronicoUC cadastrarEletronicoUC, CadastrarMesaUC cadastrarMesaUC) {
+    public CadastrarJogoUC(CadastrarEletronicoUC cadastrarEletronicoUC, CadastrarMesaUC cadastrarMesaUC,
+    BuscaJogoIdUC buscaJogoIdUC) {
         this.cadastrarEletronicoUC = cadastrarEletronicoUC;
         this.cadastrarMesaUC = cadastrarMesaUC;
+        this.buscaJogoIdUC = buscaJogoIdUC;
     }
 
     public boolean executar(JogoRequestDTO request) {
+        if(buscaJogoIdUC.executar(request.getCodigo()).isPresent()){
+            throw new IllegalArgumentException("ID já registrado: ");
+        }
         JogoEletronicoModel eletronico = null;
         JogoMesaModel mesa = null;
 

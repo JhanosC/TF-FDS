@@ -10,6 +10,7 @@ public class JogoRequestDTO {
 
     private String nome;
     private double valorBase;
+    private int codigo;
 
     // Campos para Jogo Eletrônico
     private String plataforma;
@@ -20,13 +21,14 @@ public class JogoRequestDTO {
     private Integer numeroPecas;
     private TipoMesaModel tipoMesa;
 
-    public JogoRequestDTO(String nome, double valorBase, String plataforma, TipoEletronicoModel tipoEletronico, Integer numeroPecas, TipoMesaModel tipoMesa) {
+    public JogoRequestDTO(int codigo, String nome, double valorBase, String plataforma, TipoEletronicoModel tipoEletronico, Integer numeroPecas, TipoMesaModel tipoMesa) {
         this.nome = nome;
         this.valorBase = valorBase;
         this.plataforma = plataforma;
         this.tipoEletronico = tipoEletronico;
         this.numeroPecas = numeroPecas;
         this.tipoMesa = tipoMesa;
+        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -51,6 +53,10 @@ public class JogoRequestDTO {
 
     public TipoMesaModel getTipoMesa() {
         return tipoMesa;
+    }
+
+    public int getCodigo(){
+        return codigo;
     }
 
     public String getTipoJogo() {
